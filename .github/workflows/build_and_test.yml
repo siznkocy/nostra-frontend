@@ -1,13 +1,13 @@
-name: ci
+name: test
 
 on:
   push:
     branches: [main]
-  pull:
+  pull_request:
     branches: [main]
 
   jobs:
-    build:
+    test:
       runs-on: ubuntu-latest
 
       steps:
@@ -16,5 +16,8 @@ on:
         - uses: actions/setup-node@v3
           with:
             node-version: "16"
-        - run: npm ci
-        - run: npm run build
+        - name: install dependencies
+          run: npm ci
+
+        - name: install dependencies
+          run: npm run test
