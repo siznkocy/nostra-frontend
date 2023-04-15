@@ -3,6 +3,7 @@ name: CD
 on:
   workflow_run:
     workflows: [CI]
+    branches: [main]
     types:
       - completed
 
@@ -13,4 +14,5 @@ deploy:
   steps:
     - name: configure aws S3
     - uses: aws-actions/configure-aws-credentials@v1
-    - name: build the build
+    - name: build app
+    - run: npm run build
