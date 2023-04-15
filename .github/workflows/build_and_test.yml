@@ -1,21 +1,20 @@
 name: build and test
-name: build and test
 
-on: 
-  push: 
-    branches: [main] 
-  pull: 
-    branches: [main] 
+on:
+  push:
+    branches: [main]
+  pull:
+    branches: [main]
 
-  jobs: 
-    build: 
+  jobs:
+    build:
       runs-on: ubuntu-latest
 
-      steps: 
+      steps:
         - uses: actions/checkout@v2
         - name: Setup Node
         - uses: actions/setup-node@v3
-        with: 
+          with:
             node-version: "16"
         - run: npm ci
         - run: npm run build
