@@ -14,5 +14,9 @@ deploy:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: build app
+      uses: actions/setup-node@v1
+        with:
+          node-version: 16
+    - name: install dependencies
     - run: npm ci
     - run: npm run build
