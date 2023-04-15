@@ -5,6 +5,9 @@ describe("Navbar ", () => {
   describe("Shop link", () => {
     it("should expand on hover", () => {
       render(<Navbar />);
+
+      const text = screen.getByText("Navbar");
+      expect(text).toBeInTheDocument();
     });
   });
 });

@@ -5,6 +5,9 @@ describe("Footer ", () => {
   describe("Links", () => {
     test("when clicked should make a request to tag", () => {
       render(<Footer />);
+
+      const text = screen.getByText("Footer");
+      expect(text).toBeInTheDocument();
     });
   });
 });
