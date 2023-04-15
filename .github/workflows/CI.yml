@@ -1,24 +1,22 @@
-name: CI
+name: CD
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
     branches: [main]
-  pull_request:
-    branches: [main]
+    types:
+      - completed
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+deploy:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: build app
+      uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: install dependencies
-        run: npm ci
-
-      - name: test app
-        run: npm run test
+    - name: install dependencies
+    - run: npm ci
+    - run: npm run build
